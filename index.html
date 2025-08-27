@@ -12,7 +12,15 @@
     <header>
 
     </header>
-    <main class="max-w-[1280px] mx-auto">
+    <main class="max-w-[1280px] mx-auto mt-5">
+        <!-- search field -->
+        <section>
+            <div class="mb-5">
+                <input id="search_field" type="text" placeholder="Search Phone" class="input" />
+                <button onclick="searchPhoneWithName()" class="btn btn-accent">Search</button>
+            </div>
+        </section>
+        <!-- search result -->
         <section>
             <div id="phone_container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 <!-- <div class="card bg-base-100 w-96 shadow-sm">
