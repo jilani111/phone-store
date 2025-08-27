@@ -44,14 +44,29 @@ const displayPhone = phones => {
 
         phoneContainer.appendChild(phoneCard);
     }
+
+    // hide loading spinner after load phones
+    toggleLoadingSpinner(false);
 }
 
 const searchPhoneWithName = () => {
+    // display loading spinner when click
+    toggleLoadingSpinner(true);
+
     const searchField = document.getElementById('search_field');
     const searchText = searchField.value;
-    searchField.value = '';
     // console.log(searchText);
     fetchPhoneData(searchText);
+    searchField.value = '';
+}
+
+const toggleLoadingSpinner = (isLoad) => {
+    const loadSpinner = document.getElementById('loading_spinner');
+    if(isLoad){
+        loadSpinner.classList.remove('hidden');
+    }else{
+        loadSpinner.classList.add('hidden');
+    }
 }
 
 //fetchPhoneData();

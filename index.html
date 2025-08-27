@@ -17,12 +17,17 @@
         <section>
             <div class="mb-5">
                 <input id="search_field" type="text" placeholder="Search Phone" class="input" />
-                <button onclick="searchPhoneWithName()" class="btn btn-accent">Search</button>
+                <button onclick="searchPhoneWithName()" class="btn btn-primary">Search</button>
             </div>
         </section>
         
+        <!-- search result -->
         <section class="space-y-2.5">
-            <!-- search result -->
+            <!-- loading spinner -->
+             <div id="loading_spinner" class="min-h-screen flex justify-center items-center hidden">
+                <span class="loading loading-spinner loading-lg text-primary"></span>
+             </div>
+             <!-- main container -->
             <div id="phone_container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 <!-- <div class="card bg-base-100 w-96 shadow-sm">
                     <figure>
@@ -39,7 +44,7 @@
             </div>
             <!-- load more phones button -->
              <div id="more_phone_container" class="hidden">
-                <button onclick="" class="btn btn-accent">Show More</button>
+                <button onclick="" class="btn btn-primary">Show More</button>
              </div>
         </section>
     </main>
