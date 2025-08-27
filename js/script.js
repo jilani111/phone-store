@@ -12,6 +12,17 @@ const displayPhone = phones => {
     //phoneContainer.innerHTML = '';
     //another process
     phoneContainer.textContent = '';
+
+    // display show all button if there are more than 12 phones
+    const morePhoneContainer = document.getElementById("more_phone_container");
+    if(phones.length > 12){
+        morePhoneContainer.classList.remove('hidden');
+    }else{
+        morePhoneContainer.classList.add('hidden');
+    }
+
+    // display first 12 phones
+    phones = phones.slice(0,12);
     
     // add phone card one by one
     for(const phone of phones){
@@ -43,4 +54,4 @@ const searchPhoneWithName = () => {
     fetchPhoneData(searchText);
 }
 
-fetchPhoneData();
+//fetchPhoneData();
