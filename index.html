@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
+
 <body>
     <header>
 
@@ -20,14 +22,14 @@
                 <button onclick="searchPhoneWithName()" class="btn btn-primary">Search</button>
             </div>
         </section>
-        
+
         <!-- search result -->
         <section class="space-y-2.5">
             <!-- loading spinner -->
-             <div id="loading_spinner" class="min-h-screen flex justify-center items-center hidden">
+            <div id="loading_spinner" class="min-h-screen flex justify-center items-center hidden">
                 <span class="loading loading-spinner loading-lg text-primary"></span>
-             </div>
-             <!-- main container -->
+            </div>
+            <!-- main container -->
             <div id="phone_container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 <!-- <div class="card bg-base-100 w-96 shadow-sm">
                     <figure>
@@ -43,9 +45,27 @@
                 </div> -->
             </div>
             <!-- load more phones button -->
-             <div id="more_phone_container" class="hidden text-center">
+            <div id="more_phone_container" class="hidden text-center">
                 <button onclick="showAllPhone()" class="btn btn-primary">Show More</button>
-             </div>
+            </div>
+        </section>
+
+        <!-- modal showing -->
+        <section>
+            <!-- Open the modal using ID.showModal() method -->
+            <button class="btn" onclick="show_detail_modal.showModal()">open modal</button>
+            <dialog id="show_detail_modal" class="modal">
+                <div class="modal-box">
+                    <h3 class="text-lg font-bold">Hello!</h3>
+                    <p class="py-4">Press ESC key or click the button below to close</p>
+                    <div class="modal-action">
+                        <form method="dialog">
+                            <!-- if there is a button in form, it will close the modal -->
+                            <button class="btn">Close</button>
+                        </form>
+                    </div>
+                </div>
+            </dialog>
         </section>
     </main>
     <footer>
@@ -54,4 +74,5 @@
 
     <script src="js/script.js"></script>
 </body>
+
 </html>

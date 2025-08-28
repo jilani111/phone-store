@@ -39,7 +39,7 @@ const displayPhone = (phones, isShowAll) => {
             <h2 class="card-title">${phone.phone_name}</h2>
             <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
             <div class="card-actions justify-center">
-                <button class="btn btn-primary">Details</button>
+                <button onclick="showDetails('${phone.slug}')" class="btn btn-primary">Details</button>
             </div>
         </div>
         `;
@@ -50,6 +50,13 @@ const displayPhone = (phones, isShowAll) => {
 
     // hide loading spinner after load phones
     toggleLoadingSpinner(false);
+}
+
+const showDetails = async(id) => {
+    // console.log('clicked', id);
+    const res = await fetch(`https://openapi.programming-hero.com/api/phone/${id}`);
+    const data = await res.json();
+    console.log(data.data);
 }
 
 // phone search function
