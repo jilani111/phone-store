@@ -1,5 +1,5 @@
 // data load function
-const fetchPhoneData = async(phoneName, isShowAll) => {
+const fetchPhoneData = async(phoneName='iphone', isShowAll) => {
     const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${phoneName}`);
     const data = await res.json();
     displayPhone(data.data, isShowAll);
@@ -52,11 +52,34 @@ const displayPhone = (phones, isShowAll) => {
     toggleLoadingSpinner(false);
 }
 
+// modal showing function
 const showDetails = async(id) => {
     // console.log('clicked', id);
     const res = await fetch(`https://openapi.programming-hero.com/api/phone/${id}`);
     const data = await res.json();
-    console.log(data.data);
+    const phone = data.data;
+    // console.log(phone);
+
+    const showDetailsContainer = document.getElementById('show_details_container');
+    showDetailsContainer.innerHTML = `
+    <div class="flex justify-center">
+        <img src="${phone.image}" alt="">
+    </div>
+    <div>
+        <h1 class="text-3xl font-bold">${phone.name}</h1>
+        <p>description</p>
+        <p><span class="font-bold">Storage:</span>${phone?.mainFeatures?.storage}</p>
+        <p><span class="font-bold">Display Size:</span>${phone?.mainFeatures?.displaySize}</p>
+        <p><span class="font-bold">Chipset:</span>${phone?.mainFeatures?.chipSet}</p>
+        <p><span class="font-bold">Memory:</span>${phone?.mainFeatures?.memory}</p>
+        <p><span class="font-bold">Slug:</span>${phone.slug}</p>
+        <p><span class="font-bold">Release date:</span>${phone.releaseDate}</p>
+        <p><span class="font-bold">Brand:</span>${phone.brand}</p>
+        <p><span class="font-bold">GPS:</span>${phone?.others?.GPS || 'No GPS Avaiable'}</p>
+    </div>
+    `
+
+    show_detail_modal.showModal();
 }
 
 // phone search function
@@ -84,4 +107,4 @@ const showAllPhone = () => {
     searchPhoneWithName(true);
 }
 
-//fetchPhoneData();
+fetchPhoneData();
